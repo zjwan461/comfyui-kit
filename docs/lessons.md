@@ -69,6 +69,16 @@ ComfyUI 在 Windows 上 `/object_info` 返回的是反斜杠路径，工作流�
 
 反过来，`U22` 用的是 hybrid 底模，作者带的 `dmad` / `MysticXXX` 两个 LoRA 与它维度不符（日志一直刷 `shape '[96768, 8]' is invalid for input of size 260112384`），ComfyUI 会把整个 LoRA 静默跳过——那里是直接不要 `lora_stack`，不是忘了接。
 
+turbo 挂回去之后实测（`U06V9`，1 秒 416×256，32GB 卡）：
+
+| 配置 | 总耗时 | 采样 | 说明 |
+|---|---|---|---|
+| 不挂 turbo，8 步 + 1 精修 | 371s | 9 步 | 拆分后的状态 |
+| 挂 turbo，8 步 + 1 精修 | 390s | 9 步 | 步骤没减，LoRA 只多 208 个 patch，反而慢一点 |
+| 挂 turbo，4 步 + 1 精修 | **260s** | 5 步 | 快 33%，同 seed 同机位，画面结构一致 |
+
+所以 turbo 不是"挂上就快"，是**允许把步数砍到 4**。日志里能看到 `MiniMaxH3 prepared for dynamic VRAM loading. 32427MB Staged. 208 patches attached.`，没有 LoRA 维度报错。出草稿用 4 步，交付再回 8 步。
+
 ## 常用开关
 
 ```powershell
