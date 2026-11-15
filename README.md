@@ -4,6 +4,8 @@
 
 它是从一台实际跑通的机器上打包出来的（Windows + RTX 4080 SUPER 32GB + ComfyUI 0.39.0 + torch 2.11.0+cu130），不是理论配置。
 
+**显存要求：32GB 起**（RTX 4080 SUPER 32GB、RTX 5090 32GB 这一档）。H3 多段工作流要 UNET 19.5GB + CLIP 14.6GB 同时在显存里，32GB 是本包的设计基线；24GB 卡不在支持范围内，不保证能跑，也不打算为它调参。
+
 ## 快速开始
 
 ```bash
@@ -117,6 +119,6 @@ python tools/dump_nodes.py --custom-nodes E:/ComfyUI/custom_nodes
 
 ## 没解决的部分
 
-- **3 个原版 LoRA 拿不到**：`Kook_Qwen_真实幻想V2`、`Z-Image-Base-8steps-White_Marble-AIO_v2-bf16`（Checkpoint）、`AIGC特异点-动漫转写实真人V2版`——都在 RunningHub 上且作者没冻结发布，页面不提供下载。工作流里已用本地模型替代，切回原版的节点号写在 `docs/lessons.md`。
-- **U22/U24 在 24GB 卡上仍会 OOM**：这两套要 UNET 19.5GB + CLIP 14.6GB 同时在场，`--lowvram` 能压到 28.5GB 峰值，24GB 卡需要换 int8 CLIP 并进一步降分辨率。
+- **A08 的 `Qwen动漫转写实真人V2_V2` 没找到**：要的是 Qwen-Image-Edit-2509 版（`transformer_blocks.*`，1680 张量）。曾找到同名的 `Flux2 Klein` 版（`double_blocks.*`，224 张量），底模不同、ComfyUI 会直接跳过，没有采用。A08 目前不挂这个 LoRA，靠提示词里写死的"动漫转BJD娃娃，动漫转写实真人"顶着。
+- **A08 的 ControlNet Union 是可选项**：`Qwen-Image-ControlNet-Union.safetensors` 只有 diffusers 格式，工作流里已把 ControlNet 三个节点旁路。
 - **`comfy.py validate` 不能当验收**：它只比对输入名和节点类，不校验 combo 值和必填项，会把错的判成 OK。真实判据是提交跑一遍。
