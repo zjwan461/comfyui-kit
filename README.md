@@ -9,7 +9,7 @@
 ## 快速开始
 
 ```bash
-git clone <这个仓库>
+git clone https://github.com/zjwan461/comfyui-kit.git
 cd comfyui-kit
 python install.py --comfy-dir E:/ComfyUI --staging-dir E:/staging
 ```
