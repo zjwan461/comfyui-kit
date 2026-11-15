@@ -73,7 +73,7 @@ ComfyUI 在 Windows 上 `/object_info` 返回的是反斜杠路径，工作流�
 --only 文件1,文件2
 `
 
---tier 对应：h3-core 4 个（90GB）、h3-extras 2 个（3GB）、image 9 个（84GB）、lora 10 个（45GB）、ideo 7 个（35GB）、ideo-wan 15 个（84GB），合计 341GB。
+--tier 对应：h3-core 4 个（90GB）、h3-extras 2 个（3GB）、image 10 个（111GB）、lora 11 个（48GB）、ideo 7 个（35GB）、ideo-wan 15 个（84GB），合计 341GB。
 
 ## 装不上时
 
@@ -86,3 +86,13 @@ ComfyUI 在 Windows 上 `/object_info` 返回的是反斜杠路径，工作流�
 - .install-state.json 记录已完成步骤，重跑跳过；--force 全量重来
 - logs/install.log 是完整日志（pip / git 全部输出都在）
 - 模型下载的暂存文件在 --staging-dir，中断后重跑自动续传
+
+### ModelScope 大文件别开多线程
+
+同一台机器实测（Z-Image White_Marble 19.3GiB）：
+
+- 单流 curl -L --noproxy "*" -C - -o <file> <url>：**30–50MB/s**，19GiB 约 7 分钟
+- 10 条 range 并发：全部卡在 0 字节（CDN 不拒绝、就是不给数据），白等 10 分钟
+- python urllib 直接请求：302 跳到 cdn-lfs-cn-1.modelscope.cn 后读挂住
+
+结论：ModelScope 的 resolve 地址对并发不友好，**单连接 + -C - 续传反而最快**；hf-mirror / Xet 那种才需要 12 线程分段（并且要走代理）。脚本里 --jobs 只对 HF 系有意义。
