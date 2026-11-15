@@ -92,6 +92,15 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 | 生图 | `A01-Qwen2512文生图放大`、`A08-二次元转真人`、`A08b-Krea2二次元转真人`、`B13-角色多角度`、`C19-三视图zimage双采`、`E1-首帧重建-Qwen编辑`、`T4-Krea2三视图` |
 | 视频 | `G02-Wan首尾帧`、`H41-LTX-MSR多参考`、`J13-InfiniteTalk长口播`、`N2-FishAudio声音克隆`、`P02-WanAnimate动作迁移`、`Y08-LTX四宫格` |
 
+洗图（动漫→真人）有两条，按需要挑：
+
+| | A08（Qwen-Edit） | A08b（Krea2） |
+|---|---|---|
+| 耗时 | ~160s | **~20s** |
+| 保脸 | 保留原构图与五官 | img2img，denoise 0.75 会明显换脸 |
+| 质感 | 偏渲染 | 皮肤毛孔/碎发更像实拍 |
+| 用途 | 清 AI 感、沿用原分镜 | 换成真人演员、要实拍感 |
+
 装的时候会自动把模型路径改成当前系统的分隔符（Windows 反斜杠 / Linux 正斜杠）——不改的话 ComfyUI 会报 `400 value_not_in_list`，而 `validate` 查不出来。
 
 ## 几个必须知道的
