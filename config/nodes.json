@@ -1,0 +1,428 @@
+{
+  "$comment": "kind=git 按 url 克隆并钉到 ref；kind=vendor 从 vendor/nodes/ 解压。managed=true 表示由 ComfyUI-Manager 管，本工程不装。",
+  "packs": [
+    {
+      "name": "comfy_mtb",
+      "kind": "git",
+      "url": "https://github.com/melMass/comfy_mtb.git",
+      "ref": "b35b5d8a17c0d59e80a8b3627b679c2c1003d04f",
+      "requirements": true,
+      "size_mb": 4.3,
+      "managed": false
+    },
+    {
+      "name": "ComfyLiterals",
+      "kind": "git",
+      "url": "https://github.com/M1kep/ComfyLiterals.git",
+      "ref": "bdddb08ca82d90d75d97b1d437a652e0284a32ac",
+      "requirements": false,
+      "size_mb": 0.0,
+      "managed": false
+    },
+    {
+      "name": "ComfyMath",
+      "kind": "git",
+      "url": "https://github.com/evanspearman/ComfyMath.git",
+      "ref": "c01177221c31b8e5fbc062778fc8254aeb541638",
+      "requirements": true,
+      "size_mb": 0.0,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-CogVideoXWrapper",
+      "kind": "git",
+      "url": "https://github.com/kijai/ComfyUI-CogVideoXWrapper.git",
+      "ref": "fdb8abd2790b5459ddc7066c31861bb0b62e988b",
+      "requirements": true,
+      "size_mb": 1.6,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-Custom-Scripts",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.4,
+      "managed": false
+    },
+    {
+      "name": "comfyui-deno-custom-nodes",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 9.4,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-Easy-Media",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 11.4,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-Easy-Use",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 10.8,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-FishAudioS2",
+      "kind": "git",
+      "url": "https://github.com/Saganaki22/ComfyUI-FishAudioS2.git",
+      "ref": "521f33fe79c081da314dc905ce399c62edb24749",
+      "requirements": true,
+      "size_mb": 15.3,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-Impact-Pack",
+      "kind": "git",
+      "url": "https://github.com/ltdrdata/ComfyUI-Impact-Pack",
+      "ref": "7ff671ad5f407c3eba907a9b83b6b8c9d13f64b6",
+      "requirements": true,
+      "size_mb": 5.1,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-KJNodes",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 2.5,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-Licon-MSR",
+      "kind": "git",
+      "url": "https://github.com/liconstudio/ComfyUI-Licon-MSR.git",
+      "ref": "94a52bfec735ff6f802c480f7fe8fdac1d279a7f",
+      "requirements": true,
+      "size_mb": 0.1,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-llama-cpp_T8",
+      "kind": "git",
+      "url": "https://github.com/T8mars/ComfyUI-llama-cpp_T8",
+      "ref": "ce82163c57f8b82cfc923eae09f155184e704d7e",
+      "requirements": true,
+      "size_mb": 0.2,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-LogicUtils",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.2,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-LTXVideo",
+      "kind": "git",
+      "url": "https://github.com/Lightricks/ComfyUI-LTXVideo.git",
+      "ref": "ced6bad92b82f90028e1e1fd5a37527302550fc5",
+      "requirements": true,
+      "size_mb": 73.5,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-MAINodes",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 94.2,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-MelBandRoFormer",
+      "kind": "git",
+      "url": "https://github.com/kijai/ComfyUI-MelBandRoFormer.git",
+      "ref": "92c86854e6654f4aacc97484471af95c98ea16d4",
+      "requirements": true,
+      "size_mb": 0.0,
+      "managed": false
+    },
+    {
+      "name": "comfyui-minimax-h3-audio-T8",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 17.5,
+      "managed": false
+    },
+    {
+      "name": "comfyui-minimax-h3-prompt-enhancer-T8",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 92.2,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-MiniMaxH3_LatentUpscaler",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.3,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-PT_H3ConcatAVLatent",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.0,
+      "managed": false
+    },
+    {
+      "name": "comfyui-SelfLift",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.1,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-TT-Resolution_selector-Node",
+      "kind": "git",
+      "url": "https://github.com/AICoderTudou/ComfyUI-TT-Resolution_selector-Node.git",
+      "ref": "b69cf75c2ce5f864e3db5301dba46a6b5eeaa8fb",
+      "requirements": false,
+      "size_mb": 0.0,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-VideoHelperSuite",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 0.4,
+      "managed": false
+    },
+    {
+      "name": "comfyui-vrgamedevgirl",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 34.6,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-WanAnimatePreprocess",
+      "kind": "git",
+      "url": "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git",
+      "ref": "0e0b6a2a555625acf4d4aefb780e27d06937132f",
+      "requirements": true,
+      "size_mb": 0.8,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-WanVideoWrapper",
+      "kind": "git",
+      "url": "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
+      "ref": "a7439db30bed0c5b5fa437d77ae8a7bb220dfd00",
+      "requirements": true,
+      "size_mb": 46.6,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-Whisper",
+      "kind": "git",
+      "url": "https://github.com/yuvraj108c/ComfyUI-Whisper.git",
+      "ref": "006a709848259ed3d69e2f9fcfd7a75f6c860ddd",
+      "requirements": true,
+      "size_mb": 4.9,
+      "managed": false
+    },
+    {
+      "name": "comfyui-WhiteJade-Image",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.3,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-WujiToolbox",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 2.3,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI-YCNodes-MiniMax-H3",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.2,
+      "managed": false
+    },
+    {
+      "name": "comfyUI-zealman",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.2,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI_Comfyroll_CustomNodes",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 3.1,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI_essentials",
+      "kind": "git",
+      "url": "https://github.com/cubiq/ComfyUI_essentials.git",
+      "ref": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+      "requirements": true,
+      "size_mb": 0.2,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI_LayerStyle",
+      "kind": "git",
+      "url": "https://github.com/chflame163/ComfyUI_LayerStyle",
+      "ref": "1f7edb65371526195621fdde274bf895e117120e",
+      "requirements": true,
+      "size_mb": 61.6,
+      "managed": false
+    },
+    {
+      "name": "comfyui_memory_cleanup",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 0.2,
+      "managed": false
+    },
+    {
+      "name": "Comfyui_Minimax_h3_latent_Upscaler",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.2,
+      "managed": false
+    },
+    {
+      "name": "ComfyUI_Nvidia_VFX_Nodes",
+      "kind": "git",
+      "url": "https://github.com/Comfy-Org/ComfyUI_Nvidia_VFX_Nodes.git",
+      "ref": "38d790ded00650681fa3645362efe28c8560cf40",
+      "requirements": true,
+      "size_mb": 0.4,
+      "managed": false
+    },
+    {
+      "name": "comfyui_segment_queue",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 0.7,
+      "managed": false
+    },
+    {
+      "name": "Goohaitools-comfyui",
+      "kind": "git",
+      "url": "https://github.com/goohai/Goohaitools-comfyui.git",
+      "ref": "88f2dd18aec7ba93ee451ed96a37f8f5f8ce088b",
+      "requirements": true,
+      "size_mb": 87.8,
+      "managed": false
+    },
+    {
+      "name": "MiniMax_H3_Semantic_Bridge",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 0.0,
+      "managed": false
+    },
+    {
+      "name": "nanfeng_prompt_nodes_v10",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 1.0,
+      "managed": false
+    },
+    {
+      "name": "nanfeng_prompt_nodes_v15",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": false,
+      "size_mb": 2.0,
+      "managed": false
+    },
+    {
+      "name": "RES4LYF",
+      "kind": "git",
+      "url": "https://github.com/ClownsharkBatwing/RES4LYF.git",
+      "ref": "56e44755d866c87ff9cb4b6608c8e42155db6ecc",
+      "requirements": true,
+      "size_mb": 216.5,
+      "managed": false
+    },
+    {
+      "name": "rgthree-comfy",
+      "kind": "git",
+      "url": "https://github.com/rgthree/rgthree-comfy",
+      "ref": "bc48c6aaeca87bedbc14245d89f9bc6be37a630e",
+      "requirements": true,
+      "size_mb": 6.4,
+      "managed": false
+    },
+    {
+      "name": "seedvr2_videoupscaler",
+      "kind": "vendor",
+      "url": "",
+      "ref": "",
+      "requirements": true,
+      "size_mb": 5.7,
+      "managed": false
+    },
+    {
+      "name": "was-node-suite-comfyui",
+      "kind": "git",
+      "url": "https://github.com/ltdrdata/was-node-suite-comfyui.git",
+      "ref": "44de705818d4663fefefde57ffe0ea5a9ea39df4",
+      "requirements": true,
+      "size_mb": 30.3,
+      "managed": false
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "ComfyUI-Custom-Scripts": {
+    "entries": 67,
+    "files": [
+      {
+        "bytes": 158341,
+        "file": "ComfyUI-Custom-Scripts.zip",
+        "sha256": "c8dc59f10d77ff9d83a1e010c8deadab20859126ec2da971c519a460b4174e75"
+      }
+    ],
+    "raw_bytes": 372973
+  },
+  "ComfyUI-Easy-Media": {
+    "entries": 351,
+    "files": [
+      {
+        "bytes": 6463316,
+        "file": "ComfyUI-Easy-Media.zip",
+        "sha256": "c63d9222dcf02d96bdd76d940ac47bc9e3c860364989e23a410ccbe224d2d6d0"
+      }
+    ],
+    "raw_bytes": 11968659
+  },
+  "ComfyUI-Easy-Use": {
+    "entries": 314,
+    "files": [
+      {
+        "bytes": 4263407,
+        "file": "ComfyUI-Easy-Use.zip",
+        "sha256": "7ae8ff9fda894bed3f39b0a453d5d8e730125ea7a97ccaeaa7c13aa44ec71c85"
+      }
+    ],
+    "raw_bytes": 11325635
+  },
+  "ComfyUI-KJNodes": {
+    "entries": 62,
+    "files": [
+      {
+        "bytes": 850448,
+        "file": "ComfyUI-KJNodes.zip",
+        "sha256": "3c05053422696b6e5817c00bfd77275850184b0b972b65ea6234568fe2a7b036"
+      }
+    ],
+    "raw_bytes": 2610180
+  },
+  "ComfyUI-LogicUtils": {
+    "entries": 31,
+    "files": [
+      {
+        "bytes": 44835,
+        "file": "ComfyUI-LogicUtils.zip",
+        "sha256": "014203b82c1ae456280847ae5e27e6360e0a91f8fd9c4e737c5b9900bd1147a1"
+      }
+    ],
+    "raw_bytes": 206815
+  },
+  "ComfyUI-MAINodes": {
+    "entries": 120,
+    "files": [
+      {
+        "bytes": 6932179,
+        "file": "ComfyUI-MAINodes.zip",
+        "sha256": "2ad3ee5a8a042604d2ceae84a746cce4b19d9d67490342dc3ec152f36373af1f"
+      }
+    ],
+    "raw_bytes": 8462101
+  },
+  "ComfyUI-MiniMaxH3_LatentUpscaler": {
+    "entries": 20,
+    "files": [
+      {
+        "bytes": 89011,
+        "file": "ComfyUI-MiniMaxH3_LatentUpscaler.zip",
+        "sha256": "23d9e9d69bd326a6f8ac28c0549116e2bd97df6a6e2fc82f64aa565d8bfb554b"
+      }
+    ],
+    "raw_bytes": 341134
+  },
+  "ComfyUI-PT_H3ConcatAVLatent": {
+    "entries": 2,
+    "files": [
+      {
+        "bytes": 1377,
+        "file": "ComfyUI-PT_H3ConcatAVLatent.zip",
+        "sha256": "15db26469dc48cd30ab1bb56e75937185c548b7b53420816cc6b5812c112f4e0"
+      }
+    ],
+    "raw_bytes": 2339
+  },
+  "ComfyUI-VideoHelperSuite": {
+    "entries": 41,
+    "files": [
+      {
+        "bytes": 103049,
+        "file": "ComfyUI-VideoHelperSuite.zip",
+        "sha256": "7aa44f3adddd62253fb7f193c7648b159c186a8122d86b1a0d5471726a5bab92"
+      }
+    ],
+    "raw_bytes": 397423
+  },
+  "ComfyUI-WujiToolbox": {
+    "entries": 120,
+    "files": [
+      {
+        "bytes": 1307326,
+        "file": "ComfyUI-WujiToolbox.zip",
+        "sha256": "e8cb845ac8b32c9a71e21439f04a1bcf2f49e43c64a9156ae8e43e7e45af8811"
+      }
+    ],
+    "raw_bytes": 2369985
+  },
+  "ComfyUI-YCNodes-MiniMax-H3": {
+    "entries": 11,
+    "files": [
+      {
+        "bytes": 41338,
+        "file": "ComfyUI-YCNodes-MiniMax-H3.zip",
+        "sha256": "31bbb37e01718a2f81945d68c2551c56d7b52b3d7cd442e89480fddf36b49f93"
+      }
+    ],
+    "raw_bytes": 169623
+  },
+  "ComfyUI_Comfyroll_CustomNodes": {
+    "entries": 124,
+    "files": [
+      {
+        "bytes": 1148295,
+        "file": "ComfyUI_Comfyroll_CustomNodes.zip",
+        "sha256": "ded761c32ad2352623c4dd7222bc60585565cac9ae2529442e7a5f2bae3685a5"
+      }
+    ],
+    "raw_bytes": 3260900
+  },
+  "Comfyui_Minimax_h3_latent_Upscaler": {
+    "entries": 9,
+    "files": [
+      {
+        "bytes": 45598,
+        "file": "Comfyui_Minimax_h3_latent_Upscaler.zip",
+        "sha256": "f4dc1e5e9998fc13b90c74033cbd201ba6e1950237c09958db572cbed97cbb72"
+      }
+    ],
+    "raw_bytes": 216857
+  },
+  "MiniMax_H3_Semantic_Bridge": {
+    "entries": 4,
+    "files": [
+      {
+        "bytes": 4190,
+        "file": "MiniMax_H3_Semantic_Bridge.zip",
+        "sha256": "240aa774bf46f188c95f91fce29d441a6e340b7bd51d9f080a81e27d9abf72b3"
+      }
+    ],
+    "raw_bytes": 12549
+  },
+  "comfyUI-zealman": {
+    "entries": 34,
+    "files": [
+      {
+        "bytes": 64616,
+        "file": "comfyUI-zealman.zip",
+        "sha256": "ab54e192bde506ac45e4e019c797329c3ca5c14f26111aa2bb75bc6ad7a700a5"
+      }
+    ],
+    "raw_bytes": 217663
+  },
+  "comfyui-SelfLift": {
+    "entries": 8,
+    "files": [
+      {
+        "bytes": 24470,
+        "file": "comfyui-SelfLift.zip",
+        "sha256": "ec91ad7213281d0bf745550707bd8474023562b70a7cd61c7fb3ae23004524c9"
+      }
+    ],
+    "raw_bytes": 79177
+  },
+  "comfyui-WhiteJade-Image": {
+    "entries": 60,
+    "files": [
+      {
+        "bytes": 111793,
+        "file": "comfyui-WhiteJade-Image.zip",
+        "sha256": "5c745d541b531e3a5d07e6e0f9151e64f750baf084336f5e9886e7cdbbe161c0"
+      }
+    ],
+    "raw_bytes": 338703
+  },
+  "comfyui-deno-custom-nodes": {
+    "entries": 481,
+    "files": [
+      {
+        "bytes": 6036284,
+        "file": "comfyui-deno-custom-nodes.zip",
+        "sha256": "0e997d18530d92116b683748086a37f3932036fa58e1f2761925277002497b44"
+      }
+    ],
+    "raw_bytes": 9861836
+  },
+  "comfyui-minimax-h3-audio-T8": {
+    "entries": 1635,
+    "files": [
+      {
+        "bytes": 5449852,
+        "file": "comfyui-minimax-h3-audio-T8.zip",
+        "sha256": "8e0580b6f46c86fbb6030c8670379542698186f8bd16674528b3d6ba5cbd5720"
+      }
+    ],
+    "raw_bytes": 18328880
+  },
+  "comfyui-minimax-h3-prompt-enhancer-T8": {
+    "entries": 1230,
+    "files": [
+      {
+        "bytes": 3772500,
+        "file": "comfyui-minimax-h3-prompt-enhancer-T8.zip",
+        "sha256": "80d3c13726a95a569e2d495f6374cea3318ff4a607d2339e10a47779b8692c2a"
+      }
+    ],
+    "raw_bytes": 9490837
+  },
+  "comfyui-vrgamedevgirl": {
+    "entries": 373,
+    "files": [
+      {
+        "bytes": 10540650,
+        "file": "comfyui-vrgamedevgirl.zip",
+        "sha256": "bf2fb1e9ba13a745874372e0da6902b63aee0ba2ccfca46fe876b4f6946ab55e"
+      }
+    ],
+    "raw_bytes": 33178216
+  },
+  "comfyui_memory_cleanup": {
+    "entries": 5,
+    "files": [
+      {
+        "bytes": 191942,
+        "file": "comfyui_memory_cleanup.zip",
+        "sha256": "cb11ca4fea350c777b7c24137e956f17acf0db91a5fea97473f32ba96953662b"
+      }
+    ],
+    "raw_bytes": 225044
+  },
+  "comfyui_segment_queue": {
+    "entries": 8,
+    "files": [
+      {
+        "bytes": 149034,
+        "file": "comfyui_segment_queue.zip",
+        "sha256": "09959094ac08a14da8f94dbbf7415b7e0be3bc5051060efb1c7f08e82419ae3b"
+      }
+    ],
+    "raw_bytes": 682606
+  },
+  "nanfeng_prompt_nodes_v10": {
+    "entries": 41,
+    "files": [
+      {
+        "bytes": 582224,
+        "file": "nanfeng_prompt_nodes_v10.zip",
+        "sha256": "9f3463a36e98ca9562faf365d103cfd3a280fd04a45d1a8bf779435561936b3e"
+      }
+    ],
+    "raw_bytes": 1094083
+  },
+  "nanfeng_prompt_nodes_v15": {
+    "entries": 48,
+    "files": [
+      {
+        "bytes": 1501925,
+        "file": "nanfeng_prompt_nodes_v15.zip",
+        "sha256": "4920b4990a40b04c8f23191be79974eb1da0730aeadd3e1881219c6dae307329"
+      }
+    ],
+    "raw_bytes": 2126069
+  },
+  "seedvr2_videoupscaler": {
+    "entries": 120,
+    "files": [
+      {
+        "bytes": 4715323,
+        "file": "seedvr2_videoupscaler.zip",
+        "sha256": "f1c466f5d4e8ea1ee09397208a570b081b4aa9a20a4cbac25936ebf87e218578"
+      }
+    ],
+    "raw_bytes": 5794742
+  }
+}

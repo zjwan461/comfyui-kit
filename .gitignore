@@ -1,0 +1,16 @@
+﻿# 安装过程产生的东西
+.install-state.json
+logs/
+node-map.json
+node-map.json
+.vendor-*.zip
+
+# 本机临时
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db
+
+# 下载暂存
+staging/
