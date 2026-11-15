@@ -852,6 +852,70 @@
       "ms_size": 228587720,
       "note": "krea2 anime2real V3, rank32; trigger: transform the image to realistic photograph",
       "dest": "loras/krea2/Krea2_Anything2RealCharacters-V3.safetensors"
+    },
+    {
+      "tier": "lora",
+      "file": "H3_Combat_V2.safetensors",
+      "dir": "loras",
+      "rel": "H3_Combat_V2.safetensors",
+      "url": "https://huggingface.co/JOKER141/MiniMax-H3-Combat-Base-V2/resolve/main/H3_Combat_V2.safetensors",
+      "remote": 155110280,
+      "sha256": null,
+      "status": "missing",
+      "used_by": [
+        "U06V9-9图3音",
+        "U30-三段采样与AV分离"
+      ],
+      "note": "H3 武打动作",
+      "dest": "loras/minimax/H3_Combat_V2.safetensors"
+    },
+    {
+      "tier": "lora",
+      "file": "H3_Fight_Flow_V1.safetensors",
+      "dir": "loras",
+      "rel": "H3_Fight_Flow_V1.safetensors",
+      "url": "https://huggingface.co/JOKER141/H3-Fight-Flow-Fight-Interaction-LoRA/resolve/main/H3_Fight_Flow_V1.safetensors",
+      "remote": 155110296,
+      "sha256": null,
+      "status": "missing",
+      "used_by": [
+        "U06V9-9图3音",
+        "U30-三段采样与AV分离"
+      ],
+      "note": "H3 打斗互动",
+      "dest": "loras/minimax/H3_Fight_Flow_V1.safetensors"
+    },
+    {
+      "tier": "lora",
+      "file": "Motion_Repair_V2.safetensors",
+      "dir": "loras",
+      "rel": "Motion_Repair_V2.safetensors",
+      "url": "https://huggingface.co/JOKER141/MiniMax-H3-General-Motion-Continuity-Repair/resolve/main/Motion_Repair_V2.safetensors",
+      "remote": 155110272,
+      "sha256": null,
+      "status": "missing",
+      "used_by": [
+        "U06V9-9图3音",
+        "U30-三段采样与AV分离"
+      ],
+      "note": "H3 动作连续性修复",
+      "dest": "loras/minimax/Motion_Repair_V2.safetensors"
+    },
+    {
+      "tier": "lora",
+      "file": "H3_speed_slider_1.1.safetensors",
+      "dir": "loras",
+      "rel": "H3_speed_slider_1.1.safetensors",
+      "url": "https://huggingface.co/RunningHubAI/rh-h3-speed-slider-1.1-lora/resolve/main/H3_speed_slider_1.1.safetensors",
+      "remote": 10093356,
+      "sha256": null,
+      "status": "missing",
+      "used_by": [
+        "U06V9-9图3音",
+        "U30-三段采样与AV分离"
+      ],
+      "note": "H3 速度滑杆（token_refiner，strength 3）",
+      "dest": "loras/minimax/H3_speed_slider_1.1.safetensors"
     }
   ]
 }

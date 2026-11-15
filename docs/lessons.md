@@ -79,6 +79,23 @@ turbo 挂回去之后实测（`U06V9`，1 秒 416×256，32GB 卡）：
 
 所以 turbo 不是"挂上就快"，是**允许把步数砍到 4**。日志里能看到 `MiniMaxH3 prepared for dynamic VRAM loading. 32427MB Staged. 208 patches attached.`，没有 LoRA 维度报错。出草稿用 4 步，交付再回 8 步。
 
+### 武打 LoRA 怎么接
+
+`U06V9` / `U30` 的模型链是 `900 UNETLoader -> 905 turbo(1.0) -> BlockSparseAttention`。要加武打/动作 LoRA，就在链尾继续串 `LoraLoaderModelOnly`——API 格式的工作流没有 bypass 开关，用不上就整条删掉，不要留 strength 0 的空节点。
+
+| 文件（`loras/minimax/`） | 作者默认强度 | 作用 |
+|---|---|---|
+| `H3_Combat_V2.safetensors` | 0.65 | 动作幅度、武术姿态 |
+| `H3_Fight_Flow_V1.safetensors` | 0.35 | 打斗互动（双击/连击节奏） |
+| `Motion_Repair_V2.safetensors` | 0.35 | 动作连续性修复 |
+| `H3_speed_slider_1.1.safetensors` | 3.0 | 速度滑杆，只打在 `token_refiner` 上（3 个张量、9.6MB） |
+
+实测 `turbo + H3_Combat_V2(0.65) + H3_Fight_Flow_V1(0.35)`、4 步、同 seed：**280s**（只挂 turbo 是 260s），无维度报错，画面里多了远景塔楼、机位更宽——说明确实生效。
+
+判断 LoRA 有没有真的挂上，**别看 `patches attached` 的数字**：它统计的是"被打补丁的权重个数"，三段 LoRA 都改同一批权重，所以始终是 208。要么看画面变没变，要么看日志里有没有 `lora ... shape ... is invalid` 或 `lora key not loaded`。
+
+作者原版还开着一个 `davham_cinema-h3-Euler-simple-0.8`（0.6，调色用），HF 和 ModelScope 都搜不到镜像，所以本包的调色基线比作者原始配置略冷一点。
+
 ## 常用开关
 
 ```powershell
@@ -91,7 +108,7 @@ turbo 挂回去之后实测（`U06V9`，1 秒 416×256，32GB 卡）：
 --only 文件1,文件2
 ```
 
---tier 对应 50 个模型 / 387.3GB：h3-core 4 个（96.9GB）、h3-extras 2 个（3.2GB）、image 10 个（111.3GB）、lora 12 个（48.4GB）、video 7 个（37.0GB）、video-wan 15 个（90.5GB）。
+--tier 对应 54 个模型 / 387.8GB：h3-core 4 个（96.9GB）、h3-extras 2 个（3.2GB）、image 10 个（111.3GB）、lora 16 个（48.9GB）、video 7 个（37.0GB）、video-wan 15 个（90.5GB）。
 
 ## 装不上时
 

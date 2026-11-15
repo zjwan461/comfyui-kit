@@ -1,6 +1,6 @@
 # comfyui-kit
 
-一套「换台机器也能十分钟装回来」的 ComfyUI 环境包：**安装脚本 + 50 个模型清单 + 26 个找不到仓库的节点包 + 24 套调好的工作流**。
+一套「换台机器也能十分钟装回来」的 ComfyUI 环境包：**安装脚本 + 54 个模型清单 + 26 个找不到仓库的节点包 + 24 套调好的工作流**。
 
 它是从一台实际跑通的机器上打包出来的（Windows + RTX 4080 SUPER 32GB + ComfyUI 0.39.0 + torch 2.11.0+cu130），不是理论配置。
 
@@ -19,7 +19,7 @@ python install.py --comfy-dir E:/ComfyUI --staging-dir E:/staging
 默认只下 H3 主线要的 6 个模型（约 93GB）。要全量：
 
 ```bash
-python install.py --tier all --jobs 12        # 50 个模型，387.3GB
+python install.py --tier all --jobs 12        # 54 个模型，387.8GB
 ```
 
 只要环境（不下载模型）：
@@ -47,7 +47,7 @@ python install.py --verify-only --tier all
 ```
 install.py                  一键安装（只用标准库，Win/Linux 通用）
 config/
-  models.json               50 个模型：下载地址（ModelScope 优先）、sha256、落位路径、被哪些工作流用
+  models.json               54 个模型：下载地址（ModelScope 优先）、sha256、落位路径、被哪些工作流用
   nodes.json                47 个节点包：21 个 git 仓库地址 + 26 个 vendor 包
   workflows/*.json          24 套工作流
 vendor/
@@ -61,14 +61,14 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 
 ## 装了什么
 
-### 模型（50 个 / 387.3GB，按 tier 分组）
+### 模型（54 个 / 387.8GB，按 tier 分组）
 
 | tier | 数量 | 大小 | 内容 |
 |---|---|---|---|
 | `h3-core` | 4 | 96.9GB | MiniMax H3 四套底模（fl2va / ref2va / Singularity ×2） |
 | `h3-extras` | 2 | 3.2GB | turbo 4step LoRA、clip_vision_h |
 | `image` | 10 | 111.3GB | Qwen-Image 2512 / Edit 2509 / Edit 2511 + z_image_turbo + 配套 VAE、CLIP |
-| `lora` | 12 | 48.4GB | 社区 LoRA 与蒸馏加速 LoRA |
+| `lora` | 16 | 48.9GB | 社区 LoRA 与蒸馏加速 LoRA |
 | `video` | 7 | 37.0GB | LTX-2.3 全系 + Wan 2.1 i2v + umt5 |
 | `video-wan` | 15 | 90.5GB | Wan 2.2 高/低噪、InfiniteTalk、Animate、PusaV1 等 |
 
