@@ -1,7 +1,7 @@
 {
   "comment": "dest 是相对 <comfy-dir>/models 的路径；tier 决定分组；ms_url 优先（ModelScope 直连），url 需要代理。",
   "comfy_models": "models",
-  "generated": "2026-11-15",
+  "generated": "2026-11-15 (add kook v2 lora + white marble ckpt)",
   "models": [
     {
       "file": "Minimax-h3_Singularity_ref2va_Pruned_v1.3_int8.safetensors",
@@ -798,6 +798,42 @@
       "repo": "Kijai/MelBandRoformer_comfy",
       "remote_path": "MelBandRoformer_fp16.safetensors",
       "used_by": []
+    },
+    {
+      "file": "Kook_Qwen_真实幻想V2.safetensors",
+      "dir": "loras",
+      "rel": "Qwen/Kook_Qwen_真实幻想V2.safetensors",
+      "status": "OK",
+      "used_by": [
+        "A01-Qwen2512文生图放大.json"
+      ],
+      "sha256": "",
+      "url": "",
+      "remote": 295144496,
+      "head": "ok",
+      "tier": "lora",
+      "ms_url": "https://modelscope.cn/models/KookYan/Kook_Qwen_zshx_v2/resolve/master/Kook_Qwen_%E7%9C%9F%E5%AE%9E%E5%B9%BB%E6%83%B3V2.safetensors",
+      "ms_repo": "KookYan/Kook_Qwen_zshx_v2",
+      "ms_size": 295144496,
+      "dest": "loras/Qwen/Kook_Qwen_真实幻想V2.safetensors"
+    },
+    {
+      "file": "Z-Image-Base-8steps-White_Marble-AIO_v2-bf16.safetensors",
+      "dir": "checkpoints",
+      "rel": "Zimage/Z-Image-Base-8steps-White_Marble-AIO_v2-bf16.safetensors",
+      "status": "OK",
+      "used_by": [
+        "C19-三视图zimage双采.json"
+      ],
+      "sha256": "",
+      "url": "",
+      "remote": 20690205440,
+      "head": "ok",
+      "tier": "image",
+      "ms_url": "https://modelscope.cn/models/LeopardCatMeow/Z-Image-Base-8steps-White_Marble-AIO_v2/resolve/master/Z-Image-Base-8steps-White_Marble-AIO_v2-bf16.safetensors",
+      "ms_repo": "LeopardCatMeow/Z-Image-Base-8steps-White_Marble-AIO_v2",
+      "ms_size": 20690205440,
+      "dest": "checkpoints/Zimage/Z-Image-Base-8steps-White_Marble-AIO_v2-bf16.safetensors"
     }
   ]
 }
