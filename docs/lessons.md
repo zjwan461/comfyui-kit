@@ -96,3 +96,19 @@ ComfyUI 在 Windows 上 `/object_info` 返回的是反斜杠路径，工作流�
 - python urllib 直接请求：302 跳到 cdn-lfs-cn-1.modelscope.cn 后读挂住
 
 结论：ModelScope 的 resolve 地址对并发不友好，**单连接 + -C - 续传反而最快**；hf-mirror / Xet 那种才需要 12 线程分段（并且要走代理）。脚本里 --jobs 只对 HF 系有意义。
+
+
+### 同一套「动漫转真人」，Krea2 上能用、Qwen-Edit 上不能用
+
+RunningHub 上那版 `Qwen动漫转写实真人V2_V2` 作者没冻结发布，拿不到。ModelScope 上有同作者的
+`Krea2_Anything2RealCharacters-V3`（228.6MB），但它是**给 Krea2 训的**，两者结构完全不同：
+
+| | Qwen-Image-Edit-2509 | Krea2 LoRA |
+|---|---|---|
+| 键名 | `model.diffusion_model.transformer_blocks.*` | `diffusion_model.blocks.*` / `txtfusion.*` |
+| 隐层 | 3072 | 6144 |
+| 张量数 | 1933 | 512（rank 32） |
+
+把 Krea2 的 LoRA 塞进 A08（Qwen-Edit）会被整份跳过，所以 A08 保持不挂。取而代之新增了 `A08b-Krea2二次元转真人`：
+Krea2 底模 + 这个 LoRA 0.9，img2img（denoise 0.75，8 步 cfg 1）+ SeedVR2 3B 放大到 2048，
+832×1216 → 2048×2992 全流程 20 秒，皮肤毛孔/碎发都是真的。触发词作者写在 README 里：`transform the image to realistic photograph`。

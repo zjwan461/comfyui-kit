@@ -1,7 +1,7 @@
 {
   "comment": "dest 是相对 <comfy-dir>/models 的路径；tier 决定分组；ms_url 优先（ModelScope 直连），url 需要代理。",
   "comfy_models": "models",
-  "generated": "2026-11-15 (add kook v2 lora + white marble ckpt)",
+  "generated": "2026-11-15 (add krea2 anime2real lora + A08b workflow)",
   "models": [
     {
       "file": "Minimax-h3_Singularity_ref2va_Pruned_v1.3_int8.safetensors",
@@ -834,6 +834,24 @@
       "ms_repo": "LeopardCatMeow/Z-Image-Base-8steps-White_Marble-AIO_v2",
       "ms_size": 20690205440,
       "dest": "checkpoints/Zimage/Z-Image-Base-8steps-White_Marble-AIO_v2-bf16.safetensors"
+    },
+    {
+      "tier": "lora",
+      "file": "Krea2_Anything2RealCharacters-V3.safetensors",
+      "dir": "loras",
+      "rel": "Krea2_Anything2RealCharacters-V3.safetensors",
+      "url": "https://www.modelscope.cn/models/zhouwenbin1994/Krea2_Anything2RealCharacters-V3/resolve/master/Krea2_Anything2RealCharacters-V3.safetensors",
+      "remote": 228587720,
+      "sha256": null,
+      "status": "missing",
+      "used_by": [
+        "A08b-Krea2二次元转真人"
+      ],
+      "ms_url": "https://www.modelscope.cn/models/zhouwenbin1994/Krea2_Anything2RealCharacters-V3/resolve/master/Krea2_Anything2RealCharacters-V3.safetensors",
+      "ms_repo": "zhouwenbin1994/Krea2_Anything2RealCharacters-V3",
+      "ms_size": 228587720,
+      "note": "krea2 anime2real V3, rank32; trigger: transform the image to realistic photograph",
+      "dest": "loras/krea2/Krea2_Anything2RealCharacters-V3.safetensors"
     }
   ]
 }
