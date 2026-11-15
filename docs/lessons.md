@@ -61,9 +61,17 @@ ComfyUI 在 Windows 上 `/object_info` 返回的是反斜杠路径，工作流�
 - 现在用 `--lowvram --disable-pinned-memory --disable-async-offload`，32GB 卡能跑 37GB 的模型组合（分阶段装卸）。
 - `--preview-method none` 省显存；别把 `--preview-method` 写成 `--preview-mode`（服务直接起不来）。
 
+### 拆掉 Zealman 加载器会带走它内置的 LoRA 槽
+
+`ZealmanH3ModelLoader` 把 UNET + CLIP + 两个 VAE + 6 个 LoRA 槽捆成一个节点，所以它一加载就 37GB，32GB 卡必 OOM。拆成相邻的 `UNETLoader` / `CLIPLoader` / `VAELoader`×2 之后能跑，但 LoRA 槽会一起消失——作者默认开着的是 `minimax_h3_turbo_v4_step600_ema_pruned_comfyui`（1.0）和 `davham_cinema-h3-Euler-simple-0.8`（0.6），拆完速度与调色都会变。
+
+`U06V9` / `U30` 已补一个 `905 LoraLoaderModelOnly`（turbo 1.0）接在 `900 UNETLoader` 与 `BlockSparseAttention` 之间；cinema 那个本地没有镜像，暂不补。默认关闭的四个（`H3_Combat_V2`、`Motion_Repair_V2`、`H3_Fight_Flow_V1`、`motion_speed_slider`）按需自己加。
+
+反过来，`U22` 用的是 hybrid 底模，作者带的 `dmad` / `MysticXXX` 两个 LoRA 与它维度不符（日志一直刷 `shape '[96768, 8]' is invalid for input of size 260112384`），ComfyUI 会把整个 LoRA 静默跳过——那里是直接不要 `lora_stack`，不是忘了接。
+
 ## 常用开关
 
-`powershell
+```powershell
 --with-nvidia-vfx        # RTX 超分节点（nvidia-vfx）
 --drop-git               # 克隆完删 .git，省空间
 --skip-vendor            # 不装 vendor 里的 26 个包
@@ -71,14 +79,14 @@ ComfyUI 在 Windows 上 `/object_info` 返回的是反斜杠路径，工作流�
 --pip-mirror https://pypi.tuna.tsinghua.edu.cn/simple
 --tier h3-core,h3-extras,image,lora,video,video-wan,all
 --only 文件1,文件2
-`
+```
 
---tier 对应：h3-core 4 个（90GB）、h3-extras 2 个（3GB）、image 10 个（111GB）、lora 11 个（48GB）、ideo 7 个（35GB）、ideo-wan 15 个（84GB），合计 341GB。
+--tier 对应 50 个模型 / 387.3GB：h3-core 4 个（96.9GB）、h3-extras 2 个（3.2GB）、image 10 个（111.3GB）、lora 12 个（48.4GB）、video 7 个（37.0GB）、video-wan 15 个（90.5GB）。
 
 ## 装不上时
 
 - **git 包**：会打印清单。多半是网络问题，重跑即可（脚本幂等，已克隆的会跳过）。
-- **vendor 包**：直接从仓库里的 zip 解，理论上不会失败；若提示分卷损坏，用 	ools/pack_nodes.py 重新生成。
+- **vendor 包**：直接从仓库里的 zip 解，理论上不会失败；若提示分卷损坏，用 `tools/pack_nodes.py` 重新生成。
 - **节点类还是缺**：说明某套工作流依赖的包装上了但 import 失败，看 logs/install.log 里的 IMPORT FAILED。
 
 ## 状态与日志
