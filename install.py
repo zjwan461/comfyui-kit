@@ -633,7 +633,8 @@ class Installer:
         """把常见模型子目录建好（缺目录时有些节点会直接崩）。"""
         for d in ("diffusion_models", "text_encoders", "vae", "loras", "checkpoints", "clip_vision",
                   "control_net", "upscale_models", "latent_upscale_models", "detection", "LLM",
-                  "seedvr2", "wav2vec2", "melbandroformer", "semantic_bridge", "audio_encoders"):
+                  "seedvr2", "wav2vec2", "melbandroformer", "semantic_bridge", "audio_encoders",
+                  "model_patches", "fishaudioS2", "diffusion_models/MelRoFormer"):
             (self.args.models_dir / d).mkdir(parents=True, exist_ok=True)
 
     def step_workflows(self) -> None:

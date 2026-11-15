@@ -176,7 +176,7 @@
   },
   "2869": {
     "inputs": {
-      "model_name": "MelRoFormer/MelBandRoformer_fp16.safetensors"
+      "model_name": "MelRoFormer\\MelBandRoformer_fp16.safetensors"
     },
     "class_type": "MelBandRoFormerModelLoader",
     "_meta": {

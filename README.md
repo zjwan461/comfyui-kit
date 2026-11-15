@@ -92,6 +92,14 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 | 生图 | `A01-Qwen2512文生图放大`、`A08-二次元转真人`、`A08b-Krea2二次元转真人`、`B13-角色多角度`、`C19-三视图zimage双采`、`E1-首帧重建-Qwen编辑`、`T4-Krea2三视图` |
 | 视频 | `G02-Wan首尾帧`、`H41-LTX-MSR多参考`、`J13-InfiniteTalk长口播`、`N2-FishAudio声音克隆`、`P02-WanAnimate动作迁移`、`Y08-LTX四宫格` |
 
+**首次跑会自己下东西的三套**（清单里没有，因为节点自己管）：
+
+| 工作流 | 首跑自下 | 大小 |
+|---|---|---|
+| `N2-FishAudio声音克隆` | `s2-pro`（`models/fishaudioS2/`）、whisper 模型 | 11GB + 按档位 |
+| `H41` / `Y08` | SeedVR2 的 fp8 权重 | 3.2GB |
+| `J13` | 无（但三个加载器各认一个固定目录，见 `docs/lessons.md`） | — |
+
 洗图（动漫→真人）有两条，按需要挑：
 
 | | A08（Qwen-Edit） | A08b（Krea2） |

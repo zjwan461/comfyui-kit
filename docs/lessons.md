@@ -116,6 +116,22 @@ turbo 挂回去之后实测（`U06V9`，1 秒 416×256，32GB 卡）：
 - **vendor 包**：直接从仓库里的 zip 解，理论上不会失败；若提示分卷损坏，用 `tools/pack_nodes.py` 重新生成。
 - **节点类还是缺**：说明某套工作流依赖的包装上了但 import 失败，看 logs/install.log 里的 IMPORT FAILED。
 
+### 三个加载器认的目录，和你想的不是一个
+
+J13（InfiniteTalk 长口播）第一次提交就挂在 `value_not_in_list`，三个文件全在盘上但列表是空的——因为这三个节点各自只扫一个固定目录：
+
+| 节点 | 文件该放哪 | 我们一开始放错到 |
+|---|---|---|
+| `AudioEncoderLoader`（节点 2865） | `models/audio_encoders/` | `models/wav2vec2/` |
+| `ModelPatchLoader`（节点 2864） | `models/model_patches/` | `models/diffusion_models/Wan/` |
+| `MelBandRoFormerModelLoader`（节点 2869） | `models/diffusion_models/`（它在 diffusion_models 里找，源码里写死的） | `models/melbandroformer/MelRoFormer/` |
+
+前两个还能从 `/object_info` 的候选列表反推（空列表 = 目录不存在），第三个最阴：它的候选列表是**整个 diffusion_models**（34 个文件），你看到一长串模型名会以为"目录对了只是没这个文件"，其实它压根不看 `melbandroformer/`。
+
+判断方法：提交一次，看 `value_not_in_list` 里的 `not in []`（空列表）还是 `not in (list of length 34)`（目录对、文件名不对）。空列表就是目录问题。
+
+顺带：`FishS2VoiceCloneTTS` 的 `s2-pro` 是 11GB 的 4B 全精度模型（codec 1.9GB + 两个分片 9.1GB），首次跑会自己下；它用 `snapshot_download`，所以装的时候要么给 `HF_ENDPOINT=https://hf-mirror.com`，要么让它走代理。别把 `model_path` 写成绝对路径，它只认 `models/fishaudioS2/` 下的文件夹名。
+
 ## 状态与日志
 
 - .install-state.json 记录已完成步骤，重跑跳过；--force 全量重来
