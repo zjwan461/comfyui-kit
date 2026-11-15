@@ -193,7 +193,7 @@
   },
   "3951": {
     "inputs": {
-      "distilled_adapter": "t8_compat\\MiniMaxH3_SemanticBridge_v1_T8_Compat.safetensors",
+      "distilled_adapter": "t8_compat/MiniMaxH3_SemanticBridge_v1_T8_Compat.safetensors",
       "alpha": 0.1,
       "magnitude_match": "per_token",
       "conditioning": [
@@ -296,7 +296,7 @@
       "sink_conditioning": "exact_kv_and_rows",
       "verbose": true,
       "model": [
-        "900",
+        "905",
         0
       ]
     },
@@ -694,7 +694,7 @@
   "900": {
     "class_type": "UNETLoader",
     "inputs": {
-      "unet_name": "minimax\\Minimax-h3_Singularity_ref2va_v1.3_int8.safetensors",
+      "unet_name": "minimax/Minimax-h3_Singularity_ref2va_v1.3_int8.safetensors",
       "weight_dtype": "default"
     }
   },
@@ -715,6 +715,17 @@
     "class_type": "VAELoader",
     "inputs": {
       "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "905": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "900",
+        0
+      ],
+      "lora_name": "minimax/minimax_h3_turbo_v4_step600_ema_pruned_comfyui.safetensors",
+      "strength_model": 1.0
     }
   }
 }
