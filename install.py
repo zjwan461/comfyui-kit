@@ -29,8 +29,8 @@
     python install.py --dry-run                   # 只打印将执行的命令
 
 常用参数：
-    --comfy-dir D:/ComfyUI          安装目录
-    --models-dir D:/ComfyUI/models  模型目录（可指向大盘，会自动写 extra_model_paths.yaml）
+    --comfy-dir ~/ComfyUI           安装目录（默认家目录下的 ComfyUI）
+    --models-dir <comfy-dir>/models 模型目录（可指向大盘，会自动写 extra_model_paths.yaml）
     --staging-dir E:/staging        下载暂存盘（强烈建议 SSD，机械盘会和 ComfyUI 抢 IO）
     --proxy http://127.0.0.1:11081  只有 HF / GitHub 走代理；ModelScope 永远直连
     --tier h3-core,h3-extras,image,lora,video,video-wan,all
@@ -961,7 +961,8 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    p.add_argument("--comfy-dir", type=Path, default=Path("D:/ComfyUI") if HOST else Path.home() / "ComfyUI")
+    p.add_argument("--comfy-dir", type=Path, default=Path.home() / "ComfyUI",
+                   help="ComfyUI 安装目录，默认 ~/ComfyUI")
     p.add_argument("--models-dir", type=Path, default=None, help="默认 <comfy-dir>/models")
     p.add_argument("--staging-dir", type=Path, default=None, help="下载暂存盘，建议 SSD")
     p.add_argument("--comfy-ref", default="v0.39.0")

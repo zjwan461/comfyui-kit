@@ -1,6 +1,6 @@
 # comfyui-kit
 
-一套「换台机器也能十分钟装回来」的 ComfyUI 环境包：**安装脚本 + 54 个模型清单 + 26 个找不到仓库的节点包 + 24 套调好的工作流**。
+一套「换台机器也能十分钟装回来」的 ComfyUI 环境包：**安装脚本 + 57 个模型清单 + 26 个找不到仓库的节点包 + 26 套调好的工作流**。
 
 它是从一台实际跑通的机器上打包出来的（Windows + RTX 4080 SUPER 32GB + ComfyUI 0.39.0 + torch 2.11.0+cu130），不是理论配置。
 
@@ -19,7 +19,7 @@ python install.py --comfy-dir E:/ComfyUI --staging-dir E:/staging
 默认只下 H3 主线要的 6 个模型（约 93GB）。要全量：
 
 ```bash
-python install.py --tier all --jobs 12        # 54 个模型，387.8GB
+python install.py --tier all --jobs 12        # 57 个模型，399.7GB
 ```
 
 只要环境（不下载模型）：
@@ -47,7 +47,7 @@ python install.py --verify-only --tier all
 ```
 install.py                  一键安装（只用标准库，Win/Linux 通用）
 config/
-  models.json               54 个模型：下载地址（ModelScope 优先）、sha256、落位路径、被哪些工作流用
+  models.json               57 个模型：下载地址（ModelScope 优先）、sha256、落位路径、被哪些工作流用
   nodes.json                47 个节点包：21 个 git 仓库地址 + 26 个 vendor 包
   workflows/*.json          24 套工作流
 vendor/
@@ -61,7 +61,7 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 
 ## 装了什么
 
-### 模型（54 个 / 387.8GB，按 tier 分组）
+### 模型（57 个 / 399.7GB，按 tier 分组）
 
 | tier | 数量 | 大小 | 内容 |
 |---|---|---|---|
@@ -71,6 +71,7 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 | `lora` | 16 | 48.9GB | 社区 LoRA 与蒸馏加速 LoRA |
 | `video` | 7 | 37.0GB | LTX-2.3 全系 + Wan 2.1 i2v + umt5 |
 | `video-wan` | 15 | 90.5GB | Wan 2.2 高/低噪、InfiniteTalk、Animate、PusaV1 等 |
+| `audio` | 3 | 11.1GB | MiniMax Music3 配乐（dit int8 + 文本编码器 int8 + dav VAE） |
 
 模型清单里每条都带 `used_by`，能查到「删了这个文件哪套工作流会跑不起来」。原版 `Qwen动漫转写实真人V2_V2`（RunningHub 未冻结发布）拿不到，改用 Krea2 版 `Krea2_Anything2RealCharacters-V3` 走 `A08b` 这条线，原因见 `docs/lessons.md`。
 
@@ -98,6 +99,7 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 |---|---|---|
 | `N2-FishAudio声音克隆` | `s2-pro`（`models/fishaudioS2/`）、whisper 模型 | 11GB + 按档位 |
 | `H41` / `Y08` | SeedVR2 的 fp8 权重 | 3.2GB |
+| `M1-MiniMaxMusic3配乐` | Music3 三个权重（`--tier audio` 已收录） | 11.1GB |
 | `J13` | 无（但三个加载器各认一个固定目录，见 `docs/lessons.md`） | — |
 
 洗图（动漫→真人）有两条，按需要挑：

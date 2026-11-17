@@ -163,3 +163,21 @@ RunningHub 上那版 `Qwen动漫转写实真人V2_V2` 作者没冻结发布，�
 把 Krea2 的 LoRA 塞进 A08（Qwen-Edit）会被整份跳过，所以 A08 保持不挂。取而代之新增了 `A08b-Krea2二次元转真人`：
 Krea2 底模 + 这个 LoRA 0.9，img2img（denoise 0.75，8 步 cfg 1）+ SeedVR2 3B 放大到 2048，
 832×1216 → 2048×2992 全流程 20 秒，皮肤毛孔/碎发都是真的。触发词作者写在 README 里：`transform the image to realistic photograph`。
+
+## 声音可以拆成两条独立资产（U33 speech + M1 BGM）
+
+以前 H3 一条片子把口播、环境声、配乐一起出来，改一句台词就得重出一条镜头。现在拆开：
+
+- `U33-H3口播音频T8` 只出**人声 stem**（flac，32 kHz 立体声，4.5 秒的句子约 66 秒 / 20 步）
+- `M1-MiniMaxMusic3配乐` 只出 **BGM**（flac，44.1 kHz，12 秒约 30 秒 / 40 步，`--tier audio` 三个权重共 11.1GB）
+- 合片时 `finish.py --music bgm.flac --music-volume 0.25` 做 sidechain 闪避
+
+换音乐只换 `--music` 文件，对白不动；改台词只重跑 U33，画面不动。
+
+### 三个实测坑
+
+1. **单遍 loudnorm 与两遍不是"跑两次更准"，是两种模式。** 单遍走 dynamic（保守，实测落在 −14.11 LUFS，差目标 1.9dB）；两遍先用第一遍的 `measured_I/LRA/TP/thresh` 再跑一次 linear 才精确。要落到 −16 就老老实实两遍。
+2. **节点自带的限幅器不可信。** U33 里同时存在 `peak_limit_minus_3_dbfs: true`（节点 5）和 `peak_limit_dbfs: -1.0`（节点 7），出片实测 **TP +0.19dB（已经削波）**。别指望它，出片后自己 `alimiter` 或第二遍 loudnorm 带 `TP=-1.5`。
+3. **`amix` 之后必须再 loudnorm 一遍。** `normalize=0` 保住了对白比例，但混完实测 −9.50 LUFS / TP +0.40；补一遍才回到 −14.49 / −1.49。
+
+另外 `acting_direction: place each clause and stop` 会在分句处留 **1.43 秒**停顿——念白/独白可用，对白要改成 `quick, minimal pause between clauses`。ASR 机检（`DenoAudioTranscript`）需要 venv 里装 `openai-whisper`。

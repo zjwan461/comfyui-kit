@@ -916,6 +916,63 @@
       ],
       "note": "H3 速度滑杆（token_refiner，strength 3）",
       "dest": "loras/minimax/H3_speed_slider_1.1.safetensors"
+    },
+    {
+      "dest": "diffusion_models/minimax_music3_dit_int8_convrot.safetensors",
+      "file": "minimax_music3_dit_int8_convrot.safetensors",
+      "dir": "diffusion_models",
+      "rel": "minimax_music3_dit_int8_convrot.safetensors",
+      "tier": "audio",
+      "status": "OK",
+      "used_by": [
+        "M1-MiniMaxMusic3配乐.json"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/diffusion_models/minimax_music3_dit_int8_convrot.safetensors?download=true",
+      "remote": 2502161682,
+      "head": "ok",
+      "ms_url": "https://www.modelscope.cn/models/Comfy-Org/MiniMax-Music-3/resolve/master/diffusion_models/minimax_music3_dit_int8_convrot.safetensors",
+      "ms_repo": "Comfy-Org/MiniMax-Music-3",
+      "ms_size": 2502161682,
+      "sha256": "",
+      "note": "Music3 配乐（int8 组合）"
+    },
+    {
+      "dest": "text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+      "file": "minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+      "dir": "text_encoders",
+      "rel": "minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+      "tier": "audio",
+      "status": "OK",
+      "used_by": [
+        "M1-MiniMaxMusic3配乐.json"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors?download=true",
+      "remote": 9196611886,
+      "head": "ok",
+      "ms_url": "https://www.modelscope.cn/models/Comfy-Org/MiniMax-Music-3/resolve/master/text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+      "ms_repo": "Comfy-Org/MiniMax-Music-3",
+      "ms_size": 9196611886,
+      "sha256": "",
+      "note": "Music3 配乐（int8 组合）"
+    },
+    {
+      "dest": "vae/minimax_music3_dav.safetensors",
+      "file": "minimax_music3_dav.safetensors",
+      "dir": "vae",
+      "rel": "minimax_music3_dav.safetensors",
+      "tier": "audio",
+      "status": "OK",
+      "used_by": [
+        "M1-MiniMaxMusic3配乐.json"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/vae/minimax_music3_dav.safetensors?download=true",
+      "remote": 216696128,
+      "head": "ok",
+      "ms_url": "https://www.modelscope.cn/models/Comfy-Org/MiniMax-Music-3/resolve/master/vae/minimax_music3_dav.safetensors",
+      "ms_repo": "Comfy-Org/MiniMax-Music-3",
+      "ms_size": 216696128,
+      "sha256": "",
+      "note": "Music3 配乐（int8 组合）"
     }
   ]
 }
