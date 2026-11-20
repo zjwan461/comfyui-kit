@@ -1,7 +1,7 @@
 {
   "comment": "dest 是相对 <comfy-dir>/models 的路径；tier 决定分组；ms_url 优先（ModelScope 直连），url 需要代理。",
   "comfy_models": "models",
-  "generated": "2026-11-15 (add krea2 anime2real lora + A08b workflow)",
+  "generated": "2026-11-20 (add BUNNY DanceFlow: dmd ref2va turbo lora, character swap v1.1, latent upscaler V2)",
   "models": [
     {
       "file": "Minimax-h3_Singularity_ref2va_Pruned_v1.3_int8.safetensors",
@@ -973,6 +973,63 @@
       "ms_size": 216696128,
       "sha256": "",
       "note": "Music3 配乐（int8 组合）"
+    },
+    {
+      "tier": "lora",
+      "file": "minimax_h3_dmd_ref2va_8step_turbo_pruned.safetensors",
+      "dest": "loras/minimax/minimax_h3_dmd_ref2va_8step_turbo_pruned.safetensors",
+      "note": "H3 ref2va DMD 蒸馏 8 步 turbo LoRA（实验版）；BUNNY DanceFlow 用",
+      "url": "https://huggingface.co/drbaph/MiniMax-H3-Turbo-Lora-ComfyUI/resolve/main/experimental/minimax_h3_dmd_ref2va_8step_turbo_pruned.safetensors",
+      "used_by": [
+        "BUNNY DanceFlow（桌面工作流，非随包）"
+      ],
+      "dir": "loras",
+      "rel": "minimax_h3_dmd_ref2va_8step_turbo_pruned.safetensors",
+      "remote": 2285989092,
+      "sha256": "693f41129785f31a820d32100b698cdcc42182c27c291f37f47d1ca5f38f5c20",
+      "status": "OK",
+      "head": "ok",
+      "ms_url": null,
+      "ms_repo": null,
+      "ms_size": null
+    },
+    {
+      "tier": "lora",
+      "file": "minimax_h3_character_swap_v1.1_ref2va_fro.safetensors",
+      "dest": "loras/minimax/minimax_h3_character_swap_v1.1_ref2va_fro.safetensors",
+      "note": "H3 角色替换 LoRA v1.1（80MB 动态秩 SVD 版，触发词 body_swap:）",
+      "url": "https://huggingface.co/Alissonerdx/Minimax-H3-ComfyUI/resolve/main/loras/minimax_h3_character_swap_v1.1_ref2va_fro.safetensors",
+      "used_by": [
+        "BUNNY DanceFlow（桌面工作流，非随包）"
+      ],
+      "dir": "loras",
+      "rel": "minimax_h3_character_swap_v1.1_ref2va_fro.safetensors",
+      "remote": 80673112,
+      "sha256": "ab21167bed71db99ac09527ad1f26f5f3517687ebf2e1f1bd5e91cc0bdf9b9c3",
+      "status": "OK",
+      "head": "ok",
+      "ms_url": null,
+      "ms_repo": null,
+      "ms_size": null
+    },
+    {
+      "tier": "h3-extras",
+      "file": "minimax_h3_latent_upscaler_3d_fp16_V2.safetensors",
+      "dest": "latent_upscale_models/minimax_h3_latent_upscaler_3d_fp16_V2.safetensors",
+      "note": "H3 3D 潜空间放大器 V2（SelfLiftH3Sampler 用；BUNNY 满血版）",
+      "url": "https://huggingface.co/KENIC-1/minimax_h3_latent_upscaler_3d_fp16_V2/resolve/main/minimax_h3_latent_upscaler_3d_fp16_V2.safetensors",
+      "used_by": [
+        "BUNNY DanceFlow（桌面工作流，非随包）"
+      ],
+      "dir": "latent_upscale_models",
+      "rel": "minimax_h3_latent_upscaler_3d_fp16_V2.safetensors",
+      "remote": 690592672,
+      "sha256": "043e5a48e161610ef6c3ea974645220354d06fa618abca15f76d084812eb55c2",
+      "status": "OK",
+      "head": "ok",
+      "ms_url": null,
+      "ms_repo": null,
+      "ms_size": null
     }
   ]
 }

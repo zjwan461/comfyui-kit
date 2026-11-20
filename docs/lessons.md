@@ -108,7 +108,7 @@ turbo 挂回去之后实测（`U06V9`，1 秒 416×256，32GB 卡）：
 --only 文件1,文件2
 ```
 
---tier 对应 54 个模型 / 387.8GB：h3-core 4 个（96.9GB）、h3-extras 2 个（3.2GB）、image 10 个（111.3GB）、lora 16 个（48.9GB）、video 7 个（37.0GB）、video-wan 15 个（90.5GB）。
+--tier 对应 60 个模型 / 402.8GB：h3-core 4 个（96.9GB）、h3-extras 3 个（3.9GB）、image 10 个（111.3GB）、lora 18 个（51.3GB）、video 7 个（37.0GB）、video-wan 15 个（90.5GB）、audio 3 个（11.9GB）。
 
 ## 装不上时
 
@@ -169,7 +169,7 @@ Krea2 底模 + 这个 LoRA 0.9，img2img（denoise 0.75，8 步 cfg 1）+ SeedVR
 以前 H3 一条片子把口播、环境声、配乐一起出来，改一句台词就得重出一条镜头。现在拆开：
 
 - `U33-H3口播音频T8` 只出**人声 stem**（flac，32 kHz 立体声，4.5 秒的句子约 66 秒 / 20 步）
-- `M1-MiniMaxMusic3配乐` 只出 **BGM**（flac，44.1 kHz，12 秒约 30 秒 / 40 步，`--tier audio` 三个权重共 11.1GB）
+- `M1-MiniMaxMusic3配乐` 只出 **BGM**（flac，44.1 kHz，12 秒约 30 秒 / 40 步，`--tier audio` 三个权重共 11.9GB）
 - 合片时 `finish.py --music bgm.flac --music-volume 0.25` 做 sidechain 闪避
 
 换音乐只换 `--music` 文件，对白不动；改台词只重跑 U33，画面不动。

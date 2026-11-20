@@ -1,6 +1,6 @@
 # comfyui-kit
 
-一套「换台机器也能十分钟装回来」的 ComfyUI 环境包：**安装脚本 + 57 个模型清单 + 26 个找不到仓库的节点包 + 26 套调好的工作流**。
+一套「换台机器也能十分钟装回来」的 ComfyUI 环境包：**安装脚本 + 60 个模型清单 + 26 个找不到仓库的节点包 + 26 套调好的工作流**。
 
 它是从一台实际跑通的机器上打包出来的（Windows + RTX 4080 SUPER 32GB + ComfyUI 0.39.0 + torch 2.11.0+cu130），不是理论配置。
 
@@ -19,7 +19,7 @@ python install.py --comfy-dir E:/ComfyUI --staging-dir E:/staging
 默认只下 H3 主线要的 6 个模型（约 93GB）。要全量：
 
 ```bash
-python install.py --tier all --jobs 12        # 57 个模型，399.7GB
+python install.py --tier all --jobs 12        # 60 个模型，402.8GB
 ```
 
 只要环境（不下载模型）：
@@ -47,7 +47,7 @@ python install.py --verify-only --tier all
 ```
 install.py                  一键安装（只用标准库，Win/Linux 通用）
 config/
-  models.json               57 个模型：下载地址（ModelScope 优先）、sha256、落位路径、被哪些工作流用
+  models.json               60 个模型：下载地址（ModelScope 优先）、sha256、落位路径、被哪些工作流用
   nodes.json                47 个节点包：21 个 git 仓库地址 + 26 个 vendor 包
   workflows/*.json          24 套工作流
 vendor/
@@ -61,17 +61,19 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 
 ## 装了什么
 
-### 模型（57 个 / 399.7GB，按 tier 分组）
+### 模型（60 个 / 402.8GB，按 tier 分组）
 
 | tier | 数量 | 大小 | 内容 |
 |---|---|---|---|
 | `h3-core` | 4 | 96.9GB | MiniMax H3 四套底模（fl2va / ref2va / Singularity ×2） |
-| `h3-extras` | 2 | 3.2GB | turbo 4step LoRA、clip_vision_h |
+| `h3-extras` | 3 | 3.9GB | turbo 4step LoRA、clip_vision_h、3D 潜空间放大器 V2 |
 | `image` | 10 | 111.3GB | Qwen-Image 2512 / Edit 2509 / Edit 2511 + z_image_turbo + 配套 VAE、CLIP |
-| `lora` | 16 | 48.9GB | 社区 LoRA 与蒸馏加速 LoRA |
+| `lora` | 18 | 51.3GB | 社区 LoRA、蒸馏加速 LoRA、角色替换 LoRA、动作修复 LoRA |
 | `video` | 7 | 37.0GB | LTX-2.3 全系 + Wan 2.1 i2v + umt5 |
 | `video-wan` | 15 | 90.5GB | Wan 2.2 高/低噪、InfiniteTalk、Animate、PusaV1 等 |
-| `audio` | 3 | 11.1GB | MiniMax Music3 配乐（dit int8 + 文本编码器 int8 + dav VAE） |
+| `audio` | 3 | 11.9GB | MiniMax Music3 配乐（dit int8 + 文本编码器 int8 + dav VAE） |
+
+最近一批是给桌面上的 **BUNNY DanceFlow**（第三方 UI 格式工作流，不在本仓库的 26 套里）补的三个：`minimax_h3_dmd_ref2va_8step_turbo_pruned`（8 步 DMD 蒸馏）、`minimax_h3_character_swap_v1.1_ref2va_fro`（角色替换，80MB 动态秩版）、`minimax_h3_latent_upscaler_3d_fp16_V2`（潜空间放大器 V2）。这三条 `used_by` 里没有随包工作流，`--tier all` 会一起下，不需要的可以用 `--skip-models` 跳过。
 
 模型清单里每条都带 `used_by`，能查到「删了这个文件哪套工作流会跑不起来」。原版 `Qwen动漫转写实真人V2_V2`（RunningHub 未冻结发布）拿不到，改用 Krea2 版 `Krea2_Anything2RealCharacters-V3` 走 `A08b` 这条线，原因见 `docs/lessons.md`。
 
@@ -99,7 +101,7 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 |---|---|---|
 | `N2-FishAudio声音克隆` | `s2-pro`（`models/fishaudioS2/`）、whisper 模型 | 11GB + 按档位 |
 | `H41` / `Y08` | SeedVR2 的 fp8 权重 | 3.2GB |
-| `M1-MiniMaxMusic3配乐` | Music3 三个权重（`--tier audio` 已收录） | 11.1GB |
+| `M1-MiniMaxMusic3配乐` | Music3 三个权重（`--tier audio` 已收录） | 11.9GB |
 | `J13` | 无（但三个加载器各认一个固定目录，见 `docs/lessons.md`） | — |
 
 洗图（动漫→真人）有两条，按需要挑：
