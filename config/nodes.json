@@ -317,6 +317,16 @@
       "managed": false
     },
     {
+      "name": "ComfyUI_LayerStyle_Advance",
+      "kind": "git",
+      "url": "https://github.com/chflame163/ComfyUI_LayerStyle_Advance.git",
+      "ref": "51ee6a999bb0f3bb0ab488f5a37dbbd28d3c60b1",
+      "requirements": true,
+      "deps_no_deps": true,
+      "size_mb": 55.8,
+      "managed": false
+    },
+    {
       "name": "comfyui_memory_cleanup",
       "kind": "vendor",
       "url": "",

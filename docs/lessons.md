@@ -181,3 +181,16 @@ Krea2 底模 + 这个 LoRA 0.9，img2img（denoise 0.75，8 步 cfg 1）+ SeedVR
 3. **`amix` 之后必须再 loudnorm 一遍。** `normalize=0` 保住了对白比例，但混完实测 −9.50 LUFS / TP +0.40；补一遍才回到 −14.49 / −1.49。
 
 另外 `acting_direction: place each clause and stop` 会在分句处留 **1.43 秒**停顿——念白/独白可用，对白要改成 `quick, minimal pause between clauses`。ASR 机检（`DenoAudioTranscript`）需要 venv 里装 `openai-whisper`。
+
+### 一个依赖装不上，整包静默不出现
+
+`ComfyUI_LayerStyle_Advance`（`LayerUtility: GetColorTone` 等 77 个类）是典型：
+
+- requirements 二十多项，`import wget` 这种小依赖缺一个，**整个包一个节点都不注册**，
+  日志只有 `ModuleNotFoundError: No module named 'wget'`，前端看起来就是"装了但没生效"。
+- 判断方法：`python -c "import importlib; m=importlib.import_module('py'); print(len(m.NODE_CLASS_MAPPINGS))"`
+  ——数是 0 或抛异常，就是包没起来，不是工作流的问题。
+- 它依赖 `diffusers / peft / accelerate / bitsandbytes / ultralytics`，正常 `pip install -r`
+  会把 `transformers` 一起升级，装完 ComfyUI 的行为就变了。本工程因此给这类包标
+  `deps_no_deps: true`，用 `--no-deps` 只装名字不查依赖。
+- 与基础版 `ComfyUI_LayerStyle`（171 类）**类名零重叠**，两个可以并存，不会互相覆盖注册。

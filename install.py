@@ -791,6 +791,9 @@ class Installer:
         # 装 pip 依赖前先确认 ComfyUI 没在跑（Windows 上 cv2.pyd 会被锁）
         if HOST and self._port_open(self.args.comfy_port):
             self.log("  [warn] 8188 有服务在跑：装依赖可能因 cv2.pyd 被占用失败，建议先停")
+        # 哪些包要用 --no-deps：这类包的 requirements 会顺手把 torch/transformers
+        # 一起升级（diffusers/peft/accelerate 都依赖 transformers），装完 ComfyUI 就变了
+        no_deps = {p["name"] for p in load_nodes(self.args.nodes) if p.get("deps_no_deps")}
         for d in sorted(p for p in cn.iterdir() if p.is_dir()):
             for req_name in ("requirements.txt",):
                 req = d / req_name
@@ -799,8 +802,9 @@ class Installer:
                 f = self._filtered_requirements(req)
                 if not f:
                     continue
-                self.log(f"  {d.name} ← {req_name}")
-                self.pip("-r", str(f), "-q", check=False)
+                extra = ["--no-deps"] if d.name in no_deps else []
+                self.log(f"  {d.name} ← {req_name}{' (--no-deps)' if extra else ''}")
+                self.pip("-r", str(f), "-q", *extra, check=False)
         # 公共补充：节点包里没写但实测必须要的
         self.pip("piexif", "segment-anything", "dill", "pyloudnorm", "tiktoken", "-q", check=False)
         self.pip("mediapipe", "-q", check=False)

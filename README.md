@@ -48,8 +48,8 @@ python install.py --verify-only --tier all
 install.py                  一键安装（只用标准库，Win/Linux 通用）
 config/
   models.json               60 个模型：下载地址（ModelScope 优先）、sha256、落位路径、被哪些工作流用
-  nodes.json                47 个节点包：21 个 git 仓库地址 + 26 个 vendor 包
-  workflows/*.json          24 套工作流
+  nodes.json                48 个节点包：22 个 git 仓库地址 + 26 个 vendor 包
+  workflows/*.json          26 套工作流
 vendor/
   nodes/*.zip               26 个本地节点包，压缩后 52MB
   manifest.json             每包的文件名、字节数、sha256
@@ -77,16 +77,18 @@ docs/lessons.md             为什么这么写：这一路踩的坑
 
 模型清单里每条都带 `used_by`，能查到「删了这个文件哪套工作流会跑不起来」。原版 `Qwen动漫转写实真人V2_V2`（RunningHub 未冻结发布）拿不到，改用 Krea2 版 `Krea2_Anything2RealCharacters-V3` 走 `A08b` 这条线，原因见 `docs/lessons.md`。
 
-### 节点包（47 个）
+### 节点包（48 个）
 
-- **21 个有公开仓库**：按 `config/nodes.json` 里的地址 clone，并钉在当时那台机器上的提交（`ref`），保证版本一致。
+- **22 个有公开仓库**：按 `config/nodes.json` 里的地址 clone，并钉在当时那台机器上的提交（`ref`），保证版本一致。
 - **26 个没有公开仓库**（本地改过的、群里发的、作者删库的）：打进 `vendor/nodes/*.zip` 随仓库分发，解压即用。
 
 打包时剔除了纯演示素材（预览 GIF、宣传视频、PDF），所以 289.9MB 的目录压到 52MB。**代码和运行期资源一个不少**。
 
 里面还带着两处必要的本地补丁，比如 `comfyUI-zealman/h3_model_loader.py` 把写死的 `device="default"` 改成读 `clip_device`，否则 32GB 卡上 H3 多段工作流必 OOM。
 
-### 工作流（24 套）
+**`ComfyUI_LayerStyle_Advance` 是最脆的一包**：requirements 二十多项，缺任意一个（哪怕只是个 `wget`）就有 77 个节点全部不注册，日志里只剩一行 `ModuleNotFoundError`，看上去像"包坏了"。所以它在 `nodes.json` 里标了 `deps_no_deps: true`，安装时加 `--no-deps`——避开 `diffusers/peft/accelerate` 顺手把 `transformers` 升上去。桌面那套 BUNNY DanceFlow 用的 `LayerUtility: GetColorTone` 就在这个包里（基础版 `ComfyUI_LayerStyle` 没有）。
+
+### 工作流（26 套）
 
 | 组 | 文件 |
 |---|---|
